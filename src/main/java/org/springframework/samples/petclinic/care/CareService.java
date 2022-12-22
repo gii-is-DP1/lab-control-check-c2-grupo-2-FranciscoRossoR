@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class CareService {    
 
-    @Autowired
-    CareProvisionRepository cpr;
+    // @Autowired
+    // CareProvisionRepository cpr;
     public List<Care> getAllCares(){
         return null;
     }
