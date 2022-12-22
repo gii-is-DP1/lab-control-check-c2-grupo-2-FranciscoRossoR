@@ -3,6 +3,7 @@ package org.springframework.samples.petclinic.care;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -15,6 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "care_provisions")
 public class CareProvision extends BaseEntity {
 
     @Pattern(regexp = "^Care rated with [0-9] stars.*$")

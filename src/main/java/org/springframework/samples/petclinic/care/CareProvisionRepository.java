@@ -11,8 +11,11 @@ public interface CareProvisionRepository extends CrudRepository<CareProvision,In
     Optional<CareProvision> findById(int id);
     CareProvision save(CareProvision p);
 
-    @Query("SELECT care FROM Care care")
+    @Query("SELECT care FROM cares care")
 	List<Care> findAllCares();
+
+    @Query("SELECT cp FROM care_provisions cp")
+	List<CareProvision> findAllCaresProvided();
     //List<Care> findCompatibleCares(PetType petType, Care additionalCare);
     //Care findCareByName(String name);
     //List<CareProvision> findCaresProvidedByVisitId(Integer visitId);

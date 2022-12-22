@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -21,15 +22,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "cares")
 public class Care extends BaseEntity {
 
     @NotBlank
     @Size(min = 3, max = 40)
-    @Column(unique=true)
+    @Column(unique=true, name = "name")
     String name;
 
     @Min(1)
     @Max(120)
+    @Column(name = "care_duration")
     int careDuration;
 
     @ManyToMany(cascade = CascadeType.ALL)
