@@ -41,7 +41,7 @@ public class CareService {
     }
 
     public List<CareProvision> getAllCaresProvided(){
-        return careProvisionRepository.findAllCaresProvided();
+        return careProvisionRepository.findAll();
     }
 
     public List<CareProvision> getCaresProvidedInVisitById(Integer visitId){
