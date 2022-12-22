@@ -13,10 +13,19 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class CareService {    
 
+    //@Autowired
+    //CareProvisionRepository cpr;
+
+    private CareProvisionRepository careProvisionRepository;
+
     @Autowired
-    CareProvisionRepository cpr;
+    public CareService(CareProvisionRepository careProvisionRepository){
+        this.careProvisionRepository = careProvisionRepository;
+    }
+
+    @Transactional(readOnly = true)
     public List<Care> getAllCares(){
-        return null;
+        return careProvisionRepository.findAllCares();
     }
     
     public List<Care> getAllCompatibleCares(PetType petTypeName, Care additionalCareName){
@@ -32,7 +41,7 @@ public class CareService {
     }
 
     public List<CareProvision> getAllCaresProvided(){
-        return null;
+        return careProvisionRepository.findAll();
     }
 
     public List<CareProvision> getCaresProvidedInVisitById(Integer visitId){

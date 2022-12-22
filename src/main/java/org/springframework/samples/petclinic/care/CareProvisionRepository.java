@@ -3,11 +3,19 @@ package org.springframework.samples.petclinic.care;
 import java.util.List;
 import java.util.Optional;
 
-public interface CareProvisionRepository{
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+
+public interface CareProvisionRepository extends CrudRepository<CareProvision,Integer>{
     List<CareProvision> findAll();        
     Optional<CareProvision> findById(int id);
     CareProvision save(CareProvision p);
-	//List<Care> findAllCares();
+
+    @Query("SELECT care FROM cares care")
+	List<Care> findAllCares();
+
+    @Query("SELECT cp FROM care_provisions cp")
+	List<CareProvision> findAllCaresProvided();
     //List<Care> findCompatibleCares(PetType petType, Care additionalCare);
     //Care findCareByName(String name);
     //List<CareProvision> findCaresProvidedByVisitId(Integer visitId);
